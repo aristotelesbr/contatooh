@@ -5,7 +5,7 @@ angular.module('contatooh').controller('ContatosController',
 
 		$scope.filtro = '';
 
-		$scope.mensagem = {text: ''};
+		$scope.mensagem = {texto: ''};
 
 		var Contato =  $resource('/contatos/:id');
 
@@ -17,8 +17,8 @@ angular.module('contatooh').controller('ContatosController',
 					$scope.mensagem = {};
 				},
 				function(erro) {
+					$scope.mensagem = { texto: "Não foi possivel obter a lista de contatos"};
 					console.log(erro);
-					$scope.mensagem = {"Não foi possivel obter a lista de contatos"};
 				}
 			);
 		}
@@ -28,7 +28,7 @@ angular.module('contatooh').controller('ContatosController',
 			Contato.delete({id: contato._id},
 				buscaContatos,
 				function(erro) {
-					$scope.mensagem = {"Não foi pssovel remover o contato."};
+					$scope.mensagem = {texto: "Não foi pssovel remover o contato."};
 					console.log(erro);
 				}
 			);
