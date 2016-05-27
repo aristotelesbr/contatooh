@@ -1,8 +1,5 @@
 angular.module('contatooh').controller('ContatoController', 
-	function($scope, $routeParams, $resource) {
-
-		//Aqui continua no plural, é rota do lado do servidor
-		var Contato = $resource('/contatos/:id');
+	function($scope, Contato, $routeParams ) {
 
 		if($routeParams.contatoId){
 			Contato.get({id: $routeParams.contatoId},
@@ -11,14 +8,12 @@ angular.module('contatooh').controller('ContatoController',
 				},
 				function (erro) {
 					$scope.mensagem = {texto: 'Não foi possivel obter o contato.'};
-					console.log(erro);
 				}
 			);
 		} else {
-			$scope.contato = {};
+			$scope.contato = new Contato();
 		}
 
-		$scope.contato = new Contato();
 
 		$scope.salva = function() {
 			// Logica de salvamento.
