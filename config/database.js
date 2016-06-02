@@ -1,4 +1,6 @@
 var mongoose = require('mongoose');
+// Habilita o debug do Mongoose - Logs do terminal
+mongoose.set('debug', true);
 
 module.exports = function (uri) {
 	mongoose.connect(uri);
