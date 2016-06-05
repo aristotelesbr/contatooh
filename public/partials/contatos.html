@@ -19,8 +19,9 @@
 <div class="table-responsive">
 	<table class="table table-hover">
 		<tr>
-			<th>NOME</th>
-			<th>E-MAIL</th>
+			<th>Nome</th>
+			<th>E-mail</th>
+			<th>Emergencia</th>
 			<th class="text-center">Ação</th>
 		</tr>
 		<!-- Diretiva ng repeat funciona como uma especie de each itera sobre os elementos obtidos apartir de um array vindo do model. -->
@@ -29,6 +30,7 @@
 				<a ng-href="#/contato/{{contato._id}}">{{contato.nome}}</a>
 			</td>
 			<td>{{contato.email}}</td>
+			<td>{{contato.emergencia.nome}}</td>
 			<td class="text-center">
 				<button
 					ng-click="remove(contato)"

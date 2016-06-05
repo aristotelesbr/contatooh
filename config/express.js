@@ -1,9 +1,22 @@
 var express = require('express');
 var load = require('express-load');
 var bodyParser = require('body-parser');
+var session = require('express-session');
+var passport = require('passport');
+
 
 module.exports = function() {
 	var app = express();
+
+	app.use(cookieParser());
+	app.use(session(
+			{ secret: 'homem avestruz',
+				resave: treu,
+				saveUnitialized: treu
+			}
+	));
+	app.use(passaport.initialize());
+	app.use(passaport.session());
 
 	// configuração de ambiente
 	app.set('port', 3000);

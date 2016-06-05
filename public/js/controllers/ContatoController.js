@@ -9,22 +9,25 @@ angular.module('contatooh').controller('ContatoController',
 				function (erro) {
 					$scope.mensagem = {texto: 'Não foi possivel obter o contato.'};
 				}
-			);
+				);
 		} else {
 			$scope.contato = new Contato();
 		}
 
-
 		$scope.salva = function() {
 			// Logica de salvamento.
 			$scope.contato.$save()
-				.then(function () {
-					$scope.mensagem = {texto: 'Salvo com sucesso!'};
+			.then(function () {
+				$scope.mensagem = {texto: 'Salvo com sucesso!'};
 					//Limpa formulario.
 					$scope.contato = new Contato();
 				})
-				.catch(function (erro) {
-					$scope.mensagem = {texto: 'Não foi possivel salvar'};
-				});
+			.catch(function (erro) {
+				$scope.mensagem = {texto: 'Não foi possivel salvar'};
+			});
 		};
-});
+
+		Contato.query(function (contatos) {
+			$scope.contatos = contatos;
+		});
+	});
